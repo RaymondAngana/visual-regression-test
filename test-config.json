@@ -40,40 +40,25 @@
 			"path": "/genre/pop"
 		},
 		"feature-interview": {
-			"path": "/features/VFuGfygAACcA-uY6/honeyblood",
-			"headers": {
-				"x-7d-prismic-ref": "VNol0CUAAM8At4D4"
-			}
+			"path": "/features/VFuGfygAACcA-uY6/honeyblood"
 		},
 		"feature-best-of": {
-			"path": "/features/VFOr4ygAACcA6zaV/best-of-2014",
-			"headers": {
-				"x-7d-prismic-ref": "VNol0CUAAM8At4D4"
-			}
+			"path": "/features/VFOr4ygAACcA6zaV/best-of-2014"
 		},
-		"feature-merch-list": {
-			"path": "/features/VGoRZCcAACgAWSXh/hi-res-flac",
-			"headers": {
-				"x-7d-prismic-ref": "VNol0CUAAM8At4D4"
-			}
+		"feature-product-list": {
+			"path": "/features/VFNrPigAACcA6rd4/new-tracks"
 		},
 		"feature-ones-to-watch": {
-			"path": "/features/VJLvkigAACkA24Z2/ones-to-watch-2015",
-			"headers": {
-				"x-7d-prismic-ref": "VNol0CUAAM8At4D4"
-			}
+			"path": "/features/VJLvkigAACkA24Z2/ones-to-watch-2015"
 		},
 		"feature-awards-prize": {
-			"path": "/features/VL0ktiUAACYACBKu/mercury",
+			"path": "/features/VRq9kCkAAA2fUChH/label-focus",
 			"headers": {
-				"x-7d-prismic-ref": "VNol0CUAAM8At4D4"
+				"x-7d-prismic-ref": "VS0WZScAADkA1F2_"
 			}
 		},
 		"feature-awards-award": {
-			"path": "/features/VNCyqicAAIBlcB0Z/brits",
-			"headers": {
-				"x-7d-prismic-ref": "VNol0CUAAM8At4D4"
-			}
+			"path": "/features/VOMHUyYAAPWHdX_G/brits-music-award"
 		}
 	}
 }
