@@ -51,22 +51,21 @@ phantomcss.init({
 
 casper.start().each(pageNames, function testPage(casper, pageName) {
 	var page = config.pages[pageName];
-	this.then(function () {
+	this.then(function configureRequest() {
 		phantom.clearCookies();
 		setCookies(config.cookies);
 		setCookies(page.cookies);
 	});
+	var url = config.host + page.path;
+	var headers = getHeaders(config, page);
+	this.then(log('Opening', url));
+	this.thenOpen(url, { headers: headers }, checkStatusAndWait);
 	this.each(viewportNames, function testViewport(casper, viewportName) {
-		headers = getHeaders(config, page);
-		var url = config.host + page.path;
-		var vp = config.viewports[viewportName];
+		var viewport = config.viewports[viewportName];
+		this.then(log('Setting viewport to %j', viewport));
 		this.then(function setViewport() {
-			this.viewport.apply(this, vp);
+			this.viewport.apply(this, viewport);
 		});
-		this.then(log('Opening %s on viewport %j', url, vp));
-		this.thenOpen(url, {
-			headers: headers
-		}, checkStatusAndWait);
 		this.then(log('Capturing screenshot'));
 		this.then(function captureScreenshot(){
 			var fileName = pageName + '-' + viewportName;
