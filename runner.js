@@ -38,8 +38,9 @@ function checkStatusAndWait(res) {
 	if (res.status !== 200) {
 		this.die('Expected 200 status code, got ' + res.status, 1);
 	}
-	// Pseudo-readyness-check
-	this.waitWhileSelector('.jplayer-stub');
+	// Pseudo-readyness-checks
+	this.waitWhileSelector('.jplayer-stub'); // Player initialised
+	this.waitForSelector('.header-basket-total'); // Basket retrieved
 }
 
 phantomcss.init({
