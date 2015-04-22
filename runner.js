@@ -61,6 +61,9 @@ casper.start().each(pageNames, function testPage(casper, pageName) {
 	var headers = getHeaders(config, page);
 	this.then(log('Opening', url));
 	this.thenOpen(url, { headers: headers }, checkStatusAndWait);
+	if (page.setup) {
+		page.setup(this);
+	}
 	this.each(viewportNames, function testViewport(casper, viewportName) {
 		var viewport = config.viewports[viewportName];
 		this.then(log('Setting viewport to %j', viewport));
