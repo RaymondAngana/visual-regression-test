@@ -8,15 +8,14 @@ var args = [
 	'--ssl-protocol=tlsv1',
 	'runner.js'
 ];
-
-var cmd = spawn(command, args, {
+var opts = {
+	stdio: 'inherit',
 	env: {
 		PHANTOMJS_EXECUTABLE: require('phantomcss/node_modules/phantomjs').path
 	}
-});
-cmd.stdout.pipe(process.stdout);
-cmd.stderr.pipe(process.stderr);
-cmd.on('exit', function (code) {
-	console.log('CasperJS exited with code ' + code);
+};
+
+spawn(command, args, opts).on('exit', function (code) {
+	console.info('CasperJS exited with code ' + code);
 	process.exit(code);
 });
