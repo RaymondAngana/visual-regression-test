@@ -34,13 +34,39 @@ function setCookies(cookies) {
 	}
 }
 
-function checkStatusAndWait(res) {
-	if (res.status !== 200) {
-		this.die('Expected 200 status code, got ' + res.status, 1);
-	}
+function waitForJavaScript() {
+	// Pseudo-readyness-checks
+	console.log('Waiting for JavaScript');
+	this.waitWhileSelector('.jplayer-stub'); // Player initialised
+	this.waitForSelector('.header-basket-total'); // Basket retrieved
+}
+
+function loadImages() {
+	console.log('Loading lazy-loaded images');
 	// Pseudo-readyness-checks
 	this.waitWhileSelector('.jplayer-stub'); // Player initialised
 	this.waitForSelector('.header-basket-total'); // Basket retrieved
+
+	this.on('page.error', function exitWithError(msg, stack) {
+		stack = stack.reduce(function (accum, frame) {
+			return accum + util.format('\tat %s (%s:%d)\n',
+				frame.function || '<anonymous>',
+				frame.file,
+				frame.line
+			);
+		}, '');
+		this.die(util.format('Client-side error\n%s\n%s', msg, stack), 1);
+	});
+	//this.on('remote.message', function logClientSideConsole(msg) {
+	//	console.log('Client-side log:', msg);
+	//});
+	this.thenEvaluate(function loadLazyLoadedImages() {
+		// Executed client-side
+		var load = require('src/ui/lazyload').load;
+		$('.lazy-load').each(function loadImage() { load(this, true); });
+	});
+	// Lazy-loaded images have a placeholder data gif src before loading
+	this.waitWhileSelector('.lazy-load[src^="data"]');
 }
 
 phantomcss.init({
@@ -60,7 +86,13 @@ casper.start().each(pageNames, function testPage(casper, pageName) {
 	var url = config.host + page.path;
 	var headers = getHeaders(config, page);
 	this.then(log('Opening', url));
-	this.thenOpen(url, { headers: headers }, checkStatusAndWait);
+	this.thenOpen(url, { headers: headers }, function checkStatus(res) {
+		if (res.status !== 200) {
+			this.die('Expected 200 status code, got ' + res.status, 1);
+		}
+	});
+	this.then(waitForJavaScript);
+	this.then(loadImages);
 	if (page.setup) {
 		page.setup(this);
 	}
