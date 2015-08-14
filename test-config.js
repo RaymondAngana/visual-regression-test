@@ -79,6 +79,7 @@ module.exports = {
 				value: 'sid2=basket-with-two-items'
 			}],
 			setup: function showBasket(casper) {
+				console.log('Showing basket');
 				casper.thenClick('.header-basket-link');
 				casper.waitForSelector('.notification.basket.is-visible');
 			}

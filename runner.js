@@ -94,7 +94,7 @@ casper.start().each(pageNames, function testPage(casper, pageName) {
 	this.then(waitForJavaScript);
 	this.then(loadImages);
 	if (page.setup) {
-		page.setup(this);
+		this.then(page.setup.bind(null, this));
 	}
 	this.each(viewportNames, function testViewport(casper, viewportName) {
 		var viewport = config.viewports[viewportName];
