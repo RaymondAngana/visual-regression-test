@@ -76,7 +76,10 @@ phantomcss.init({
 	libraryRoot: './node_modules/phantomcss'
 });
 
-casper.start().each(pageNames, function testPage(casper, pageName) {
+casper.start().then(function () {
+	this.options.waitTimeout = 10000;
+})
+.each(pageNames, function testPage(casper, pageName) {
 	var page = config.pages[pageName];
 	this.then(function configureRequest() {
 		phantom.clearCookies();
