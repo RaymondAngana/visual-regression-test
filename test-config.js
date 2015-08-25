@@ -1,5 +1,5 @@
 module.exports = {
-	host: 'https://www.7digital.local:3000',
+	host: require('system').env.HOST, // CasperJS-specific
 	selector: 'body',
 	viewports: {
 		'smartphone-portrait': [320, 480],

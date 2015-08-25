@@ -1,0 +1,7 @@
+tests:
+  build: .
+  environment:
+      HOST:
+  volumes:
+    - ./screenshots/:/tests/screenshots/
+    - ./failures/:/tests/failures/
