@@ -114,6 +114,10 @@ casper.start().then(function () {
 });
 
 casper.then(function diffScreenshots() {
+	// No assertions are run when generating reference screenshots.
+	// There has to be at least one assertion so casper doesn't exit with
+	// code 1 and "WARN Looks like you didn't run any test."
+	casper.test.assert(true, 'Dummy assertion');
 	phantomcss.compareAll();
 });
 
