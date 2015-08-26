@@ -85,6 +85,22 @@ module.exports = {
 				casper.thenClick('.header-basket-link');
 				casper.waitForSelector('.notification.basket.is-visible');
 			}
+		},
+		'legal': {
+			'path': '/legal?prismicRef=VVSYmi0AAJgBZDQ7',
+			// Mysteriously stopped working in some cases, possibly when
+			// phantomjs is running on linux
+			// 'headers': {
+			// 	'x-7d-prismic-ref': 'VVSYmi0AAJgBZDQ7'
+			// }
+		},
+		'legal-policies': {
+			'path': '/legal/VVIaxi0AAC__V7_9?prismicRef=VVSYmi0AAJgBZDQ7',
+			// Mysteriously stopped working in some cases, possibly when
+			// phantomjs is running on linux
+			// 'headers': {
+			// 	'x-7d-prismic-ref': 'VVSYmi0AAJgBZDQ7'
+			// }
 		}
 	}
 };
