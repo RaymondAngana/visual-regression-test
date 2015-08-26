@@ -63,11 +63,13 @@ module.exports = {
 		'feature-ones-to-watch': {
 			path: '/features/VJLvkigAACkA24Z2/ones-to-watch-2015'
 		},
-		'feature-awards-prize': {
-			path: '/features/VRq9kCkAAA2fUChH/label-focus',
-			'headers': {
-				'x-7d-prismic-ref': 'VS0WZScAADkA1F2_'
-			}
+		'feature-label-focus': {
+			path: '/features/VRq9kCkAAA2fUChH/label-focus?prismicRef=VS0WZScAADkA1F2_',
+			// Mysteriously stopped working in some cases, possibly when
+			// phantomjs is running on linux
+			// 'headers': {
+			// 	'x-7d-prismic-ref': 'VS0WZScAADkA1F2_'
+			// }
 		},
 		'feature-awards-award': {
 			path: '/features/VOMHUyYAAPWHdX_G/brits-music-award'
