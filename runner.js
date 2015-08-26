@@ -77,7 +77,7 @@ phantomcss.init({
 });
 
 casper.start().then(function () {
-	this.options.waitTimeout = 10000;
+	this.options.waitTimeout = 15000;
 })
 .each(pageNames, function testPage(casper, pageName) {
 	var page = config.pages[pageName];
