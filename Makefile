@@ -13,7 +13,7 @@ remove_reference_images:
 
 test:
 	docker-compose build
-	HOST=http://$(WEBSTORE_IP):3000 docker-compose run tests
+	HOST=https://$(WEBSTORE_IP):3000 docker-compose run tests
 
 comparisons: stop_containers require_reference_images test
 
