@@ -11,6 +11,7 @@ RUN svn checkout https://github.com/google/fonts/trunk/apache/opensans .
 RUN chmod 775 *.ttf
 
 WORKDIR /tests
-ADD *.js* ./
+ADD package.json ./package.json
 RUN npm install
+ADD *.js ./
 CMD node casperjs-wrapper.js
