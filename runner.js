@@ -43,9 +43,6 @@ function waitForJavaScript() {
 
 function loadImages() {
 	console.log('Loading lazy-loaded images');
-	// Pseudo-readyness-checks
-	this.waitWhileSelector('.jplayer-stub'); // Player initialised
-	this.waitForSelector('.header-basket-total'); // Basket retrieved
 
 	this.on('page.error', function exitWithError(msg, stack) {
 		stack = stack.reduce(function (accum, frame) {
