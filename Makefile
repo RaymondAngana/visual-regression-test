@@ -8,13 +8,19 @@ require_reference_images:
 	@(ls ./screenshots/*.png &> /dev/null)\
 		|| (echo 'No reference screenshots found' && exit 1)
 
-remove_reference_images:
+remove_comparison_images:
+	rm -f ./screenshots/*.diff.png
+	rm -f ./screenshots/*.fail.png
+	rm -f ./failures/*.png
+
+remove_all_images:
 	rm -f ./screenshots/*.png
+	rm -f ./failures/*.png
 
 test:
 	docker-compose build
 	HOST=https://$(WEBSTORE_IP):3000 docker-compose run tests
 
-comparisons: stop_containers require_reference_images test
+comparisons: stop_containers remove_comparison_images require_reference_images test
 
-references: stop_containers remove_reference_images test
+references: stop_containers remove_all_images test
