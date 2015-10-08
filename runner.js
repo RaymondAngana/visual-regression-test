@@ -59,8 +59,8 @@ function loadImages() {
 	//});
 	this.thenEvaluate(function loadLazyLoadedImages() {
 		// Executed client-side
-		var load = require('src/ui/lazyload').load;
-		$('.lazy-load').each(function loadImage() { load(this, true); });
+		var lazyload = require('src/ui/lazyload');
+		$('.lazy-load').each(function loadImage() { lazyload.load(this, true); });
 	});
 	// Lazy-loaded images have a placeholder data gif src before loading
 	this.waitWhileSelector('.lazy-load[src^="data"]');
