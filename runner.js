@@ -59,7 +59,7 @@ function loadImages() {
 	//});
 	this.thenEvaluate(function loadLazyLoadedImages() {
 		// Executed client-side
-		var lazyload = require('src/ui/lazyload');
+		var lazyload = require('webstore-client/ui/lazyload');
 		$('.lazy-load').each(function loadImage() { lazyload.load(this, true); });
 	});
 	// Lazy-loaded images have a placeholder data gif src before loading
