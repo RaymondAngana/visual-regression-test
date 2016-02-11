@@ -74,6 +74,9 @@ module.exports = {
 		'feature-awards-award': {
 			path: '/features/VOMHUyYAAPWHdX_G/brits-music-award'
 		},
+		'feature-awards-award-2': {
+			path: '/features/VriKLCkAAPE-l70s/brits-music-award?prismicRef=Vrx-FikAAPQmkvaG'
+		},
 		'basket': {
 			path: '/search?q=keane',
 			cookies: [{
