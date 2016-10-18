@@ -1,11 +1,11 @@
-WEBSTORE_CONTAINER=$(shell docker ps --filter 'label=7d-webstore-stub' -q)
-WEBSTORE_IP=$(shell docker inspect --format='{{.NetworkSettings.IPAddress}}' $(WEBSTORE_CONTAINER))
-
 install:
 	docker-compose build
 
 stop:
 	docker-compose stop
+
+clean:
+	docker rm $(docker ps --filter 'name=visualregressiontest' -aq)
 
 down:
 	docker-compose down
@@ -24,7 +24,7 @@ remove-all-images:
 	rm -f ./failures/*.png
 
 test:
-	HOST=https://$(WEBSTORE_IP):3000 docker-compose run tests
+	docker-compose run tests
 
 comparisons: stop remove-comparison-images require-reference-images test
 
