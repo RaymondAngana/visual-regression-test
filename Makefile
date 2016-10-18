@@ -1,26 +1,31 @@
 WEBSTORE_CONTAINER=$(shell docker ps --filter 'label=7d-webstore-stub' -q)
 WEBSTORE_IP=$(shell docker inspect --format='{{.NetworkSettings.IPAddress}}' $(WEBSTORE_CONTAINER))
 
-stop_containers:
+install:
+	docker-compose build
+
+stop:
 	docker-compose stop
 
-require_reference_images:
+down:
+	docker-compose down
+
+require-reference-images:
 	@(ls ./screenshots/*.png &> /dev/null)\
 		|| (echo 'No reference screenshots found' && exit 1)
 
-remove_comparison_images:
+remove-comparison-images:
 	rm -f ./screenshots/*.diff.png
 	rm -f ./screenshots/*.fail.png
 	rm -f ./failures/*.png
 
-remove_all_images:
+remove-all-images:
 	rm -f ./screenshots/*.png
 	rm -f ./failures/*.png
 
 test:
-	docker-compose build
 	HOST=https://$(WEBSTORE_IP):3000 docker-compose run tests
 
-comparisons: stop_containers remove_comparison_images require_reference_images test
+comparisons: stop remove-comparison-images require-reference-images test
 
-references: stop_containers remove_all_images test
+references: stop remove-all-images test

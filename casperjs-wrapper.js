@@ -12,7 +12,7 @@ var opts = {
 	stdio: 'inherit',
 	env: {
 		PHANTOMJS_EXECUTABLE: require('phantomcss/node_modules/phantomjs-prebuilt').path,
-		HOST: 'https://www.hptn.org'
+		HOST: process.env.HOST
 	}
 };
 

@@ -13,7 +13,6 @@ RUN chmod 775 *.ttf
 WORKDIR /tests
 COPY package.json ./package.json
 COPY npm-shrinkwrap.json ./npm-shrinkwrap.json
-COPY .npmrc-authed .npmrc
 RUN npm install
 COPY *.js ./
 CMD node casperjs-wrapper.js
