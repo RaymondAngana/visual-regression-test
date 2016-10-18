@@ -91,8 +91,6 @@ casper.start().then(function () {
 			this.die('Expected 200 status code, got ' + res.status, 1);
 		}
 	});
-	this.then(waitForJavaScript);
-	this.then(loadImages);
 	if (page.setup) {
 		this.then(page.setup.bind(null, this));
 	}

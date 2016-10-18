@@ -11,8 +11,8 @@ var args = [
 var opts = {
 	stdio: 'inherit',
 	env: {
-		PHANTOMJS_EXECUTABLE: require('phantomcss/node_modules/casperjs/node_modules/phantomjs').path,
-		HOST: process.env.HOST
+		PHANTOMJS_EXECUTABLE: require('phantomcss/node_modules/phantomjs-prebuilt').path,
+		HOST: 'https://www.hptn.org'
 	}
 };
 

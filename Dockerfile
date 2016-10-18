@@ -1,4 +1,4 @@
-FROM node:4.4.4
+FROM node:4.6.0
 RUN npm install -g npm@2.13.2
 
 RUN apt-get update && apt-get install -y --no-install-recommends\
