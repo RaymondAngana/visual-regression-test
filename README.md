@@ -13,3 +13,18 @@ A project that uses CasperJS with PhantomCSS to perform visual regression tests.
 `make remove-comparison-images` -- deletes comparison images
 
 `make remove-all-images` -- deletes all images (comparison and reference)
+
+## To Configure
+
+### docker-compose.yml
+
+Add the "HOST" environment variable as the url you want to test
+
+### test-config.js
+
+Configure your test variables, including:
+
+* `host` -- read from the docker-compose.yml environment variables (leave as is)
+* `selector` -- body is good, but can be tweaked to be more specific
+* `viewports` -- viewport size to use for regression tests (can be multiple)
+* `pages` -- key/value pairs where the "key" is a single word description of the page you are testing (used in the screenshot name) and the "value" is the path of the page to test
