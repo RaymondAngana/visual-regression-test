@@ -139,6 +139,44 @@ module.exports = {
 		},
 		'scholars-projects-oral-poster': {
 			path: '/node/239'
+		},
+
+		// "Community" Sub Menues and Sub Pages.
+		'study-participation': {
+			path: '/community/study-participation-information'
+		},
+		'meetings-events': {
+			path: '/community/meetings-events'
+		},
+		'meetings-educators-training': {
+			path: '/news-and-events/meetings/hptn-083-community-educators-training'
+		},
+		'meetings-annual-meeting': {
+			path: '/news-and-events/meetings/2016-hptn-network-annual-meeting'
+		},
+		'photos-video': {
+			path: '/community/photos-video'
+		},
+		'photo-writing-workshop': {
+			path: '/community/photos-video/hptnmtn-community-writing-workshop'
+		},
+		'video-sten-vermund': {
+			path: '/community/photos-video/sten-vermund-discusses-hptn-community'
+		},
+		'community-team': {
+			path: '/community/community-team'
+		},
+		'community-toolbox': {
+			path: '/community/community-toolbox'
+		},
+		'FAQ': {
+			path: '/community/community-toolbox/faq'
+		},
+		'FAQ-CIWP': {
+			path: '/community/community-toolbox/faq/what-community-involvement-work-plan-ciwp'
+		},
+		'FAQ-informed-consent': {
+			path: '/community/community-toolbox/faq/what-informed-consent'
 		}
 	}
 };
