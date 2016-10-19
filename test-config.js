@@ -71,6 +71,74 @@ module.exports = {
 		},
 		'ethics': {
 			path: '/about/ethics'
+		},
+
+		// "Research" Sub Menus and Sub Pages.
+		'studies': {
+			path: '/research/studies'
+		},
+		'studies-hvtn704': {
+			path: '/research/studies/177'
+		},
+		'studies-hvtn703': {
+			path: '/research/studies/167'
+		},
+		'studie-hptn-067': {
+			path: '/research/studies/82'
+		},
+		'studies-hptn-052': {
+			path: '/research/studies/33'
+		},
+		'sites': {
+			path: '/research/sites'
+		},
+		'sites-ACSA': {
+			path: '/research/sites/8'
+		},
+		'sites-Bronx': {
+			path: '/research/sites/20'
+		},
+		'publications': {
+			path: '/research/publications'
+		},
+		'publications-HIV-drug': {
+			path: '/research/publications/659'
+		},
+		'publications-gender-attitudes': {
+			path: '/research/publications/674'
+		},
+		'scholars': {
+			path: '/research/scholars'
+		},
+		'scholars-domestic': {
+			path: '/research/scholars/domestic'
+		},
+		'scholars-international': {
+			path: '/research/scholars/international'
+		},
+		'scholars-scholars': {
+			path: '/research/scholars/scholars'
+		},
+		'scholars-international-khoza': {
+			path: '/research/scholars/scholars/nomhle-khoza'
+		},
+		'scholars-domestic-ojeda': {
+			path: '/research/scholars/scholars/dr-victoria-ojeda'
+		},
+		'scholars-projects': {
+			path: '/research/scholars/projects'
+		},
+		'scholars-projects-manuscript': {
+			path: '/node/253'
+		},
+		'scholars-projects-poster': {
+			path: '/node/247'
+		},
+		'scholars-projects-oral': {
+			path: '/node/240'
+		},
+		'scholars-projects-oral-poster': {
+			path: '/node/239'
 		}
 	}
 };
