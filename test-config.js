@@ -203,6 +203,23 @@ module.exports = {
 		},
 		'newsletters': {
 			path: '/news-and-events/newsletters'
+		},
+
+		// "Resources" Sub Menus and Sub Pages.
+		'prevention': {
+			path: '/resources/prevention'
+		},
+		'network-templates': {
+			path: '/resources/network-templates'
+		},
+		'manual-operations': {
+			path: '/resources/manual-of-operations'
+		},
+		'regulatory-resources': {
+			path: '/resources/regulatory'
+		},
+		'external-resources': {
+			path: '/resources/external'
 		}
 	}
 };
