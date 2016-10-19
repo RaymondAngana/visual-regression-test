@@ -11,11 +11,11 @@ module.exports = {
 		'about': {
 			path: '/about'
 		},
-		'community': {
-			path: '/community'
-		},
 		'research': {
 			path: '/research'
+		},
+		'community': {
+			path: '/community'
 		},
 		'news-and-events': {
 			path: '/news-and-events'
