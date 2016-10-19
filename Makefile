@@ -10,6 +10,10 @@ clean:
 down:
 	docker-compose down
 
+shrinkwrap:
+	if [ -f npm-shrinkwrap.json ]; then rm npm-shrinkwrap.json; fi
+	npm shrinkwrap
+
 require-reference-images:
 	@(ls ./screenshots/*.png &> /dev/null)\
 		|| (echo 'No reference screenshots found' && exit 1)
