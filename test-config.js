@@ -141,7 +141,7 @@ module.exports = {
 			path: '/node/239'
 		},
 
-		// "Community" Sub Menues and Sub Pages.
+		// "Community" Sub Menus and Sub Pages.
 		'study-participation': {
 			path: '/community/study-participation-information'
 		},
@@ -177,6 +177,32 @@ module.exports = {
 		},
 		'FAQ-informed-consent': {
 			path: '/community/community-toolbox/faq/what-informed-consent'
+		},
+
+		// "News & Events" Sub Menus and Sub Pages.
+		'press-releases': {
+			path: '/news-and-events/press-releases'
+		},
+		'press-releases-hptn-responds': {
+			path: '/news-and-events/press-releases/hptn-responds-to-results-from-anrs-12249-tasp-study-presented-at'
+		},
+		'press-releases-hptn-073': {
+			path: '/news-and-events/press-releases/hptn-073-consistency-between-self-report-and-drug-levels-for-prep'
+		},
+		'announcements': {
+			path: '/news-and-events/announcements'
+		},
+		'announcements-at-HIVR4P': {
+			path: '/news-and-events/announcements/hptn-at-hivr4p'
+		},
+		'announcements-accept-applications': {
+			path: '/news-and-events/announcements/scholars-programs-accepting-applications'
+		},
+		'meetings': {
+			path: '/news-and-events/meetings'
+		},
+		'newsletters': {
+			path: '/news-and-events/newsletters'
 		}
 	}
 };
