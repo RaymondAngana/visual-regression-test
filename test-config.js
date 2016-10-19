@@ -220,6 +220,11 @@ module.exports = {
 		},
 		'external-resources': {
 			path: '/resources/external'
+		},
+
+		// "Contact" Sub Menus and Sub Pages.
+		'press': {
+			path: '/contact/press'
 		}
 	}
 };
