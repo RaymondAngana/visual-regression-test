@@ -70,7 +70,8 @@ phantomcss.init({
 	screenshotRoot: './screenshots',
 	failedComparisonsRoot: './failures',
 	mismatchTolerance: 0.1,
-	libraryRoot: './node_modules/phantomcss'
+	libraryRoot: './node_modules/phantomcss',
+	prefixCount: true // Moves numbering in front of the file name.
 });
 
 casper.start().then(function () {
@@ -101,8 +102,62 @@ casper.start().then(function () {
 			this.viewport.apply(this, viewport);
 		});
 		this.then(log('Capturing screenshot'));
-		this.then(function captureScreenshot(){
-			var fileName = pageName + '-' + viewportName;
+		this.then(function captureScreenshot() {
+			var fileName = 'anon' + '-' + pageName + '-' + viewportName;
+			phantomcss.screenshot(config.selector, fileName);
+		});
+	});
+})
+.then(function() {
+	// Load Login URL and login as Administrator.
+	// @TODO Create user with the role Content Editor (?)
+	// to prevent testing under Administrator role.
+	// Clear Cookies before login.
+	phantom.clearCookies();
+	this.thenOpen(config.host + '/user/login', function() {
+		this.test.assertUrlMatches(config.host + '/user/login',
+			"On the Login page.");
+		this.test.assertExists('#user-login-form', 'Login form is found.');
+		// Use current Admin user credentials to log in.
+		this.fill('form#user-login-form', {
+			name: 'admin',
+			pass: 'N1PxyyXIgrgai0puAk5q'
+		}, true);
+		// @TODO - Add check for changed URL,
+		// @TODO - which will indicate that User was logged in correctly.
+		// this.test.assertUrlMatches(config.host + '/user/1',
+		// "On the Admin account page");
+	});
+})
+.each(pageNames, function testPage(casper, pageName) {
+	// @TODO - refactor every call to function each()
+	// @TODO - to follow DRY principles.
+	// Test only pages that need to be viewed as Authenticated user.
+	var page = config.pages[pageName];
+	this.then(function configureRequest() {
+		setCookies(config.cookies);
+		setCookies(page.cookies);
+	});
+	var url = config.host + page.path;
+	var headers = getHeaders(config, page);
+	this.then(log('Opening', url));
+	this.thenOpen(url, { headers: headers }, function checkStatus(res) {
+		if (res.status !== 200) {
+			this.die('Expected 200 status code, got ' + res.status, 1);
+		}
+	});
+	if (page.setup) {
+		this.then(page.setup.bind(null, this));
+	}
+	this.each(viewportNames, function testViewport(casper, viewportName) {
+		var viewport = config.viewports[viewportName];
+		this.then(log('Setting viewport to %j', viewport));
+		this.then(function setViewport() {
+			this.viewport.apply(this, viewport);
+		});
+		this.then(log('Capturing screenshot'));
+		this.then(function captureScreenshot() {
+			var fileName = 'auth' + '-' + pageName + '-' + viewportName;
 			phantomcss.screenshot(config.selector, fileName);
 		});
 	});

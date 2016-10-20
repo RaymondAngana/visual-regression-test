@@ -223,6 +223,12 @@ module.exports = {
 		},
 
 		// "Contact" Sub Menus and Sub Pages.
+		'directory': {
+			path: '/contact/directory'
+		},
+		'Email Lists': {
+			path: '/contact/email-lists'
+		},
 		'press': {
 			path: '/contact/press'
 		}
