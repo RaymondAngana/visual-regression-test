@@ -1,22 +1,32 @@
 module.exports = {
-	host: require('system').env.HOST, // CasperJS-specific
+	host: require('system').env.HOST, // CasperJS-specific.
+
+	// Variables used for testing as an Authenticated user.
+	runAuthenticated: true, // Set to false if you do wish to run tests as an Authenticated user.
+	loginPath: '/user/login',
+	loginFormSelector: 'form#user-login-form', // Form tag followed by ID.
+	userName: 'admin', // Username or user email - depending upon website setup.
+	userPass: 'N1PxyyXIgrgai0puAk5q', // Password.
+
 	selector: 'body',
+	screenshotPrefixAnon: 'anon', // Screenshot prefix for an Anonymous user testing.
+	screenshotPrefixAuth: 'auth', // Screenshot prefix for an Authenticated user testing.
 	viewports: {
 		'desktop-standard': [1280, 1024]
 	},
 	pages: {
 
-		// Main Menu pages
+		// Main Menu pages.
 		'home': {
 			path: '/'
 		},
 		'about': {
 			path: '/about'
 		},
-		'research': {
+		 'research': {
 			path: '/research'
 		},
-		'community': {
+			'community': {
 			path: '/community'
 		},
 		'news-and-events': {
@@ -226,7 +236,7 @@ module.exports = {
 		'directory': {
 			path: '/contact/directory'
 		},
-		'Email Lists': {
+		'email-lists': {
 			path: '/contact/email-lists'
 		},
 		'press': {
