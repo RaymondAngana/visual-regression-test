@@ -2,9 +2,19 @@
 
 A project that uses CasperJS with PhantomCSS to perform visual regression tests.
 
+## Set variables
+
+Set HOST variable in `docker-compose.yml`.
+
+Set variables in `test-config.js`.
+
+Available variables allow to initiate Authenticated user testing.
+
 ## Make targets
 
 `make install` -- builds the docker container for testing
+
+NOTE: `make install` should be run each time `runner.js` is updated
 
 `make references` -- deletes any existing reference images and creates new reference images
 
