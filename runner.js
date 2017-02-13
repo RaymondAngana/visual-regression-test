@@ -147,7 +147,8 @@ phantomcss.init({
   prefixCount: true // Moves numbering in front of the file name.
 });
 
-casper.start().then(function () {
+casper.start();
+casper.setHttpAuth('demo', 'demo').then(function () {
   this.options.waitTimeout = 15000;
 })
 .each(pageNames, testPage) // Processes every page as Anonymous user.
