@@ -1,7 +1,7 @@
 tests:
   build: .
   environment:
-      HOST: https://www.hptn.org
+      HOST: https://www.martin.fl.us
   volumes:
     - ./screenshots/:/tests/screenshots/
     - ./failures/:/tests/failures/
