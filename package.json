@@ -1,8 +1,8 @@
 {
   "name": "visual-regression-test",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Project to perform visual regression tests using PhantomCSS",
-  "repository": "https://github.com/savaslabs/visual-regression-test.git",
+  "repository": "https://github.com/promet/visual-regression-test.git",
   "dependencies": {
     "path": "^0.4.9",
     "phantomcss": "^1.1.4",
