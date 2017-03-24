@@ -12,7 +12,7 @@ down:
 
 shrinkwrap:
 	if [ -f npm-shrinkwrap.json ]; then rm npm-shrinkwrap.json; fi
-	npm shrinkwrap
+	docker-compose run tests npm shrinkwrap --workdir="/tests"
 
 require-reference-images:
 	@(ls ./screenshots/*.png &> /dev/null)\
