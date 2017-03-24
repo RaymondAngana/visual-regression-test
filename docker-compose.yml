@@ -1,7 +1,7 @@
 tests:
   build: .
   environment:
-      HOST: https://www.martin.fl.us
+      HOST: https://martinstg.prod.acquia-sites.com/
   volumes:
     - ./screenshots/:/tests/screenshots/
     - ./failures/:/tests/failures/

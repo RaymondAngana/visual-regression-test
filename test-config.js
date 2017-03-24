@@ -12,7 +12,7 @@ module.exports = {
 	screenshotPrefixAnon: 'anon', // Screenshot prefix for an Anonymous user testing.
 	screenshotPrefixAuth: 'auth', // Screenshot prefix for an Authenticated user testing.
 	viewports: {
-		'desktop-standard': [1280, 1024]
+		'desktop-standard': [1600, 3000]
 	},
 
 	pages: {
