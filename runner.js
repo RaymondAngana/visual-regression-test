@@ -14,6 +14,11 @@ var runAuthenticated = config.runAuthenticated;
 // We use Anonymous user prefix "anon" as default.
 var screenshotPrefix = config.screenshotPrefixAnon;
 
+
+String.prototype.ucFirst = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 function log() {
   var args = arguments;
   return function log() {
@@ -80,11 +85,14 @@ function loadImages() {
  */
 function testPage(casper, pageName) {
   var page = config.pages[pageName];
+  var pageName = (page.charAt(0) == '/' && page.length > 1) ? page.substr(1) : page;
+      pageName = (page == '/') ? 'Home' : pageName.replace('/', '-').ucFirst();
+
   this.then(function configureRequest() {
     setCookies(config.cookies);
     setCookies(page.cookies);
   });
-  var url = config.host + page.path;
+  var url = config.host + page;
   var headers = getHeaders(config, page);
 
   this.then(log('Opening', url));
