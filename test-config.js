@@ -3,10 +3,15 @@ module.exports = {
 
 	// Variables used for testing as an Authenticated user.
 	runAuthenticated: true, // Set to false if you do wish to run tests as an Authenticated user.
-	loginPath: '/user/login',
-	loginFormSelector: 'form#user-login', // Form tag followed by ID.
-	userName: 'regressiontest3', // Username or user email - depending upon website setup.
-	userPass: '1234', // Password.
+
+    loginObj: [
+        {
+            path: '/user/login',
+            formSelector: 'form#user-login', // Form tag followed by ID.
+            userName: 'regressiontest3', // Username or user email - depending upon website setup.
+            userPass: '1234', // Password.
+        }
+    ],
 
 	selector: 'body',
 	screenshotPrefixAnon: 'anon', // Screenshot prefix for an Anonymous user testing.

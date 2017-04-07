@@ -5,10 +5,7 @@ var url = require('url');
 var pageNames = Object.keys(config.pages);
 var viewportNames = Object.keys(config.viewports);
 var cookieDomain = url.parse(config.host).hostname;
-var loginPath = config.loginPath;
-var loginFormSelector = config.loginFormSelector;
-var userName = config.userName;
-var userPass = config.userPass;
+var loginObj = config.loginObj;
 var runAuthenticated = config.runAuthenticated;
 // Define default screenshot prefix.
 // We use Anonymous user prefix "anon" as default.
@@ -126,25 +123,35 @@ function testPage(casper, pageName) {
 function authenticateUser() {
   // Clear cookies.
   phantom.clearCookies();
-  // Load Login URL and authenticate as userName and userPass.
-  casper.thenOpen(config.host + loginPath, function() {
-    this.test.assertUrlMatches(config.host + loginPath,
-      "On the Login page.");
-    this.test.assertExists(loginFormSelector, 'Login form is found.');
-    // Log in with set credentials.
-    this.fill(loginFormSelector, {
-      name: userName,
-      pass: userPass
-    }, true);
-    /*
-     * TODO:
-     * If necessary - Add an assertion that User was logged in correctly.
-     * E.g. Url match - this.test.assertUrlMatches(config.host + '/user/1',
-     * "On the Admin account page"); - is too specific
-     * and will only work for certain setups,
-     * where user is redirected to account page upon login.
-     */
-  });
+
+  var loginPath, loginFormSelector,userName, userPass;
+
+  for(var i = 0 ; i < loginObj.length; i++) {
+      loginPath = loginObj[i].path;
+      loginFormSelector = loginObj[i].formSelector;
+      userName = loginObj[i].userName;
+      userPass = loginObj[i].userPass;
+
+    // Load Login URL and authenticate as userName and userPass.
+    casper.thenOpen(config.host + loginPath, function() {
+      this.test.assertUrlMatches(config.host + loginPath,
+        "On the Login page.");
+      this.test.assertExists(loginFormSelector, 'Login form is found.');
+      // Log in with set credentials.
+      this.fill(loginFormSelector, {
+        name: userName,
+        pass: userPass
+      }, true);
+      /*
+       * TODO:
+       * If necessary - Add an assertion that User was logged in correctly.
+       * E.g. Url match - this.test.assertUrlMatches(config.host + '/user/1',
+       * "On the Admin account page"); - is too specific
+       * and will only work for certain setups,
+       * where user is redirected to account page upon login.
+       */
+    });
+  }
 }
 
 phantomcss.init({
