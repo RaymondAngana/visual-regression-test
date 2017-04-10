@@ -83,7 +83,7 @@ function loadImages() {
 function testPage(casper, pageName) {
   var page = config.pages[pageName];
   var pageName = (page.charAt(0) == '/' && page.length > 1) ? page.substr(1) : page;
-      pageName = (page == '/') ? 'Home' : pageName.replace('/', '-').ucFirst();
+      pageName = (page == '/') ? 'Home' : pageName.replace(/\//g, '-').ucFirst();
 
   this.then(function configureRequest() {
     setCookies(config.cookies);
