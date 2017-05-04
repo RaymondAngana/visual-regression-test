@@ -170,11 +170,15 @@ phantomcss.init({
 casper.start();
 casper.setHttpAuth('demo', 'demo').then(function () {
   this.options.waitTimeout = 15000;
-})
-.each(pageNames, testPage) // Processes every page as Anonymous user.
-.then(function() {
+});
+
+if (!config.runAuthenticatedOnly) {
+  casper.each(pageNames, testPage) // Processes every page as Anonymous user.
+}
+
+casper.then(function() {
   // Conditional processing as Authenticated user.
-  if (runAuthenticated) {
+  if (runAuthenticated || config.runAuthenticatedOnly) {
     authenticateUser();
     // Change screenshot prefix.
     screenshotPrefix = config.screenshotPrefixAuth;
