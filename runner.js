@@ -111,7 +111,12 @@ function testPage(casper, pageName) {
       this.then(log('Capturing screenshot'));
       // Capture screenshot and save it w/ customized file name.
       this.then(function captureScreenshot() {
-        var fileName = screenshotPrefix + '-' + pageName + '-' + viewportName;
+        var viewPortVal = '(' + viewport + ')';
+        var abbr = {
+          's': screenshotPrefix,
+          'v': viewPortVal.replace(',', 'x')
+        }
+        var fileName = abbr.s + '-' + pageName + '-' + viewportName + abbr.v;
         phantomcss.screenshot(config.selector, fileName);
       });
     });
