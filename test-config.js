@@ -2,7 +2,8 @@ module.exports = {
 	host: require('system').env.HOST, // CasperJS-specific.
 
 	// Variables used for testing as an Authenticated user.
-	runAuthenticated: true, // Set to false if you do wish to run tests as an Authenticated user.
+	runAuthenticated: true, // Set to true if you wish to run tests as an Authenticated user.
+    runAuthenticatedOnly: false, // Set to true if you wish to run tests as Authenticated user ONLY.
 
     loginObj: [
         {
