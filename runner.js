@@ -10,11 +10,22 @@ var runAuthenticated = config.runAuthenticated;
 // Define default screenshot prefix.
 // We use Anonymous user prefix "anon" as default.
 var screenshotPrefix = config.screenshotPrefixAnon;
+var count = 1;
 
 
+// Extend String to emulate PHP's ucFirst() function.
 String.prototype.ucFirst = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
+
+// Extend Number to add leading zeroes.
+Number.prototype.pad = function(size) {
+  var size = size ? size : 4; // Default padding is 4, which adds four leading zeroes.
+  var s = String(this);
+  while (s.length < (size || 2)) {s = "0" + s;}
+  return s;
+}
+
 
 function log() {
   var args = arguments;
@@ -92,6 +103,9 @@ function testPage(casper, pageName) {
   var url = config.host + page;
   var headers = getHeaders(config, page);
 
+  // Fix double backslash issue.
+  url = url.replace(/\/\//g, '/');
+
   this.then(log('Opening', url));
   this.thenOpen(url, {headers: headers}, function checkStatus(res) {
     if (res.status !== 200) {
@@ -116,8 +130,9 @@ function testPage(casper, pageName) {
           's': screenshotPrefix,
           'v': viewPortVal.replace(',', 'x')
         }
-        var fileName = abbr.s + '-' + pageName + '-' + viewportName + abbr.v;
+        var fileName = count.pad() + '_' + abbr.s + '-' + pageName + '-' + viewportName + abbr.v;
         phantomcss.screenshot(config.selector, fileName);
+        count++;
       });
     });
 }
@@ -164,7 +179,8 @@ phantomcss.init({
   failedComparisonsRoot: './failures',
   mismatchTolerance: 0.1,
   libraryRoot: './node_modules/phantomcss',
-  prefixCount: true // Moves numbering in front of the file name.
+  addIteratorToImage: false
+  //prefixCount: true // Moves numbering in front of the file name.
 });
 
 casper.start();
