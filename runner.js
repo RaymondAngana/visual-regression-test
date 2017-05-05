@@ -10,6 +10,7 @@ var runAuthenticated = config.runAuthenticated;
 // Define default screenshot prefix.
 // We use Anonymous user prefix "anon" as default.
 var screenshotPrefix = config.screenshotPrefixAnon;
+var count = 1;
 
 
 // Extend String to emulate PHP's ucFirst() function.
@@ -101,7 +102,6 @@ function testPage(casper, pageName) {
   });
   var url = config.host + page;
   var headers = getHeaders(config, page);
-  var count = 0;
 
   this.then(log('Opening', url));
   this.thenOpen(url, {headers: headers}, function checkStatus(res) {
@@ -129,8 +129,8 @@ function testPage(casper, pageName) {
         }
         var fileName = count.pad() + '_' + abbr.s + '-' + pageName + '-' + viewportName + abbr.v;
         phantomcss.screenshot(config.selector, fileName);
+        count++;
       });
-      count++;
     });
 }
 
