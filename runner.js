@@ -127,7 +127,7 @@ function testPage(casper, pageName) {
           's': screenshotPrefix,
           'v': viewPortVal.replace(',', 'x')
         }
-        var fileName = count.pad() + abbr.s + '-' + pageName + '-' + viewportName + abbr.v;
+        var fileName = count.pad() + '_' + abbr.s + '-' + pageName + '-' + viewportName + abbr.v;
         phantomcss.screenshot(config.selector, fileName);
       });
       count++;
