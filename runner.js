@@ -103,6 +103,9 @@ function testPage(casper, pageName) {
   var url = config.host + page;
   var headers = getHeaders(config, page);
 
+  // Fix double backslash issue.
+  url = url.replace(/\/\//g, '/');
+
   this.then(log('Opening', url));
   this.thenOpen(url, {headers: headers}, function checkStatus(res) {
     if (res.status !== 200) {
