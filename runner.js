@@ -11,6 +11,7 @@ var runAuthenticated = config.runAuthenticated;
 // We use Anonymous user prefix "anon" as default.
 var screenshotPrefix = config.screenshotPrefixAnon;
 var count = 1;
+var delay = config.delay ? config.delay : 0;
 
 
 // Extend String to emulate PHP's ucFirst() function.
@@ -131,7 +132,7 @@ function testPage(casper, pageName) {
           'v': viewPortVal.replace(',', 'x')
         }
         var fileName = count.pad() + '_' + abbr.s + '-' + pageName + '-' + viewportName + abbr.v;
-        phantomcss.screenshot(config.selector, fileName);
+        phantomcss.screenshot(config.selector, delay, '', fileName);
         count++;
       });
     });
