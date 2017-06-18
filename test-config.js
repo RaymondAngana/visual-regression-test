@@ -40,7 +40,7 @@ module.exports = {
             "path": "/building"
         },
         "business": {
-            "path": "business"
+            "path": "/business"
         },
         "doing-business-w-martin-county": {
             "path": "/business/doing-business-w-martin-county"
@@ -335,15 +335,6 @@ module.exports = {
         },
         "budget-and-finance": {
             "path": "/resources/budget-and-finance"
-        },
-        "crash-surveillance-report-2016-2": {
-            "path": "/resources/crash-surveillance-report-2016-2"
-        },
-        "development-review-application": {
-            "path": "/resources/development-review-application"
-        },
-        "development-review-fee-schedule": {
-            "path": "/resources/development-review-fee-schedule"
         },
         "municode-martin-county": {
             "path": "/resources/municode-martin-county"
